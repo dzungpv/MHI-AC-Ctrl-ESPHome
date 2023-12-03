@@ -6,15 +6,15 @@ substitutions:
 
 esphome:
   name: lr_mhi_ac_ctrl
-  platform: ESP8266
-  board: d1_mini
-  platformio_options:
-    # Run CPU at 160Mhz to fix mhi_ac_ctrl_core.loop error: -2
-    board_build.f_cpu: 160000000L
   includes:
     - mhi_ac_ctrl.h
     - MHI-AC-Ctrl-core.h
     - MHI-AC-Ctrl-core.cpp
+    
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino    
 
 wifi:
   ssid: "**SSID**"
@@ -25,7 +25,6 @@ wifi:
 
 logger:
   level: DEBUG
-  baud_rate: 0
 
 globals:
   - id: room_temp_api_timeout
